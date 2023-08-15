@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { BrowserRouter } from 'react-router-dom';
+import { SupervisorProvider } from './components/context/SupervisorContext';
+import { StudentProvider } from './components/context/StudentContext';
+import { InboxProvider } from './components/context/InboxContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <SupervisorProvider>
+        <InboxProvider>
+          <StudentProvider>
+            <App />
+          </StudentProvider>
+        </InboxProvider>
+      </SupervisorProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
