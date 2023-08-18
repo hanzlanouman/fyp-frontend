@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Card,
   Input,
@@ -8,12 +8,29 @@ import {
   Textarea,
   Stepper,
   Step,
+  Select,
+  Option,
 } from '@material-tailwind/react';
-import { registerFYP } from '../../services/api';
+import { getAvbSupervisors, registerFYP } from '../../services/api';
 
 const FYPRegForm = () => {
   // ... All your previous constants and logic ...
   // (Remove the `showSecondForm` state as we're not using it anymore)
+  const [avbSupervisors, setAvbSupervisors] = useState([]);
+
+  useEffect(() => {
+    const fetchSupervisors = async () => {
+      try {
+        const response = await getAvbSupervisors();
+        setAvbSupervisors(response.data.supervisors);
+      } catch (error) {
+        console.error('An error occurred while fetching the data: ', error);
+      }
+    };
+
+    fetchSupervisors();
+  }, []);
+  console.log('Available Supervisor', avbSupervisors);
   const departments = [
     'Computer Science',
     'Electrical Engineering',
@@ -169,12 +186,12 @@ const FYPRegForm = () => {
                 }`}
                 name='department'
                 value={studentInfo.department}
-                onChange={(e) =>
+                onChange={(e) => {
                   setStudentInfo((prev) => ({
                     ...prev,
                     department: e.target.value,
-                  }))
-                }
+                  }));
+                }}
               >
                 <option value='' disabled>
                   Select your department
@@ -220,30 +237,39 @@ const FYPRegForm = () => {
                 value={studentInfo.projectTitle}
               />
 
-              <Input
-                size='lg'
-                label='Principal Supervisor *'
-                error={!isSecondFormValid && !studentInfo.principalSupervisor}
-                onChange={(e) =>
-                  setStudentInfo((prev) => ({
-                    ...prev,
-                    principalSupervisor: e.target.value,
-                  }))
-                }
-                value={studentInfo.principalSupervisor}
-              />
-
-              <Input
-                size='lg'
-                label='Co-Supervisor'
-                onChange={(e) =>
-                  setStudentInfo((prev) => ({
-                    ...prev,
-                    coSupervisor: e.target.value,
-                  }))
-                }
-                value={studentInfo.coSupervisor}
-              />
+              <div className='mb-4'>
+                <Select
+                  className={`border rounded w-full p-2 ${
+                    !isSecondFormValid && !studentInfo.principalSupervisor
+                      ? 'border-red-500'
+                      : ''
+                  }`}
+                  name='principalSupervisor'
+                  label='Select Supervisor'
+                  placeholder='Select Supervisor'
+                  value={studentInfo.principalSupervisor}
+                  onChange={(e) => {
+                    const value = e.target ? e.target.value : e;
+                    setStudentInfo((prev) => ({
+                      ...prev,
+                      principalSupervisor: value,
+                    }));
+                  }}
+                >
+                  {/* <Option value='' disabled>
+                    Select your Principal Supervisor
+                  </Option> */}
+                  {avbSupervisors.map((supervisor) =>
+                    supervisor.department === studentInfo.department ? (
+                      <Option key={supervisor.id} value={supervisor.name}>
+                        {supervisor.name}
+                      </Option>
+                    ) : (
+                      <Option disabled>No Department Selected</Option>
+                    )
+                  )}
+                </Select>
+              </div>
 
               <Textarea
                 size='lg'
@@ -300,8 +326,6 @@ const FYPRegForm = () => {
 };
 
 export default FYPRegForm;
-
-
 
 // DML FOR adding a password field to supervisor
 // ALTER TABLE supervisors ADD COLUMN password VARCHAR(255) NOT NULL;

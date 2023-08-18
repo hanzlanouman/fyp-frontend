@@ -68,11 +68,12 @@ const ArrangeMeetingForm = () => {
     setMessages((prev) => [...prev, meetingAsMessage]);
 
     // Simulate a call to the API to save the meeting
+    console.log(formData);
     await addMeeting(formData);
   };
 
   return (
-    <Card className='mx-20 my-[9.5rem] w-full'>
+    <Card className='mx-20 my-[9.5rem] w-full border border-gray-200'>
       <CardBody>
         <Typography variant='h4' className='text-center mb-6'>
           Arrange a Meeting
@@ -82,6 +83,7 @@ const ArrangeMeetingForm = () => {
           <div className='mb-4'>
             <Input
               type='date'
+              label='Date'
               color='blue-gray'
               name='date'
               value={formData.date}
@@ -95,6 +97,7 @@ const ArrangeMeetingForm = () => {
               type='time'
               color='blue-gray'
               name='time'
+              label='Time'
               value={formData.time}
               onChange={handleInputChange}
               size='regular'
@@ -104,6 +107,7 @@ const ArrangeMeetingForm = () => {
           <div className='mb-4'>
             <Select
               name='supervisor'
+              label='Choose Supervisor'
               placeholder='Choose Supervisor'
               outline={true}
               onChange={handleInputChange}
@@ -118,7 +122,7 @@ const ArrangeMeetingForm = () => {
             <Input
               type='text'
               color='blue-gray'
-              placeholder='Meeting Topic'
+              label='Meeting Topic'
               name='topic'
               value={formData.topic}
               onChange={handleInputChange}
@@ -130,7 +134,7 @@ const ArrangeMeetingForm = () => {
             <Input
               type='text'
               color='blue-gray'
-              placeholder='Meeting Description'
+              label='Meeting Description'
               name='description'
               value={formData.description}
               onChange={handleInputChange}
@@ -138,8 +142,8 @@ const ArrangeMeetingForm = () => {
             />
           </div>
 
-          <div className='flex justify-center'>
-            <Button color='' type='submit' ripple='light'>
+          <div className='flex justify-center mt-10 px-5'>
+            <Button color='black' type='submit' ripple='true' size='lg'>
               Schedule Meeting
             </Button>
           </div>

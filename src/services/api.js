@@ -50,4 +50,32 @@ export const addMeeting = async (formData) => {
   return response;
 };
 
-export const loadSupervisorInbox = async(formData);
+export const loadSupervisorInbox = async (formData) => {
+  console.log('SUPERVISOR INBOX API', formData);
+  const response = await axios.post(`${URL}/loadSupervisorInbox`, {
+    userID: formData,
+  });
+  return response;
+};
+
+export const loadApprovals = async (userID) => {
+  console.log('API Reached', userID);
+  const response = await axios.post(`${URL}/loadApprovals`, { userID: userID });
+  return response;
+};
+
+export const approveFYP = async (project) => {
+  console.log(project, 'Approve API');
+  const response = await axios.post(`${URL}/FYP/approve`, project);
+};
+
+export const rejectFYP = async (project) => {
+  console.log(project, 'Reject API');
+  const response = await axios.post(`${URL}/FYP/reject`, project);
+};
+
+export const getAvbSupervisors = async () => {
+  console.log('Get Supervisors API');
+  const response = await axios.get(`${URL}/FYP/getAvbSupervisors`);
+  return response;
+};

@@ -2,10 +2,15 @@ import React, { useContext } from 'react';
 import { useState, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Input, Typography, Card, Button } from '@material-tailwind/react';
-import { supervisorLogin } from '../../services/api';
+import { loadApprovals, supervisorLogin } from '../../services/api';
 import { SupervisorContext } from '../context/SupervisorContext';
+import { loadSupervisorInbox } from '../../services/api';
+import { InboxContext } from '../context/InboxContext';
+import { ApprovalContext } from '../context/ApprovalContext';
 const SupervisorLogin = () => {
   const { setSupervisorData, setProjects } = useContext(SupervisorContext);
+  const { approvals, setApprovals } = useContext(ApprovalContext);
+  const { setMessages } = useContext(InboxContext);
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
@@ -25,7 +30,6 @@ const SupervisorLogin = () => {
     email: false,
     password: false,
   });
-
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const navigate = useNavigate();
@@ -77,7 +81,16 @@ const SupervisorLogin = () => {
       .then((res) => {
         setSupervisorData(res.data);
         setProjects(res.data.projects);
-        loadSupervisorInbox(res.data.empID);
+
+        loadSupervisorInbox(res.data.supervisorData.empID).then((res) => {
+          // console.log(res.data);
+          setMessages(res.data.inbox);
+        });
+        loadApprovals(res.data.supervisorData.empID).then((res) => {
+          console.log(res.data, "ZOOOOOOOOOOOOOOOs");
+          setApprovals(res.data);
+          console.log('Current', approvals);
+        });
         navigate('/supervisor');
       })
       .catch((err) => console.log(err.message));

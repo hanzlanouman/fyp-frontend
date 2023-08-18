@@ -24,6 +24,7 @@ import { ProjectTimeline } from '../other/ProjectTimelineSupervisor';
 import ArrangeMeetingForm from '../forms/ArrangeMeetingForm';
 import ArrangeMeetingFormSupervisor from '../forms/ArrangeMeetingFormSupervisor';
 import { SupervisorContext } from '../context/SupervisorContext';
+import Approvals from '../other/Approvals';
 
 const ClipboardListIcon = () => (
   <svg
@@ -148,7 +149,11 @@ const SupervisorDashboard = () => {
                       <List className='p-0 pl-5'>
                         <ListItem
                           onClick={() =>
-                            setActiveComponent(<ArrangeMeetingFormSupervisor />)
+                            setActiveComponent(
+                              <ArrangeMeetingFormSupervisor
+                                projectID={project.ProjectID}
+                              />
+                            )
                           }
                         >
                           <Typography
@@ -193,6 +198,12 @@ const SupervisorDashboard = () => {
               <InboxIcon className='h-5 w-5' />
             </ListItemPrefix>
             Inbox
+          </ListItem>
+          <ListItem onClick={() => setActiveComponent(<Approvals />)}>
+            <ListItemPrefix>
+              <InboxIcon className='h-5 w-5' />
+            </ListItemPrefix>
+            Pending Approvals
           </ListItem>
 
           <ListItem onClick={logout}>

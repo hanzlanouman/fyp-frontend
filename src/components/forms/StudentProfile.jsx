@@ -42,7 +42,7 @@ const StudentProfile = () => {
 
   return (
     <div className='flex justify-center items-center h-screen'>
-      <Card className='p-6 w-[40rem] max-w-[50rem] shadow-blue-gray-50'>
+      <Card className='p-6 w-[40rem] max-w-[50rem] shadow-blue-gray-50 border border-gray-200'>
         <Typography color='blue-gray' className='mb-6 font-normal text-center'>
           Student Profile
         </Typography>

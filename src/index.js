@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { SupervisorProvider } from './components/context/SupervisorContext';
 import { StudentProvider } from './components/context/StudentContext';
 import { InboxProvider } from './components/context/InboxContext';
+import { ApprovalProvider } from './components/context/ApprovalContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -14,7 +15,9 @@ root.render(
       <SupervisorProvider>
         <InboxProvider>
           <StudentProvider>
-            <App />
+            <ApprovalProvider>
+              <App />
+            </ApprovalProvider>
           </StudentProvider>
         </InboxProvider>
       </SupervisorProvider>

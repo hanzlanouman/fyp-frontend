@@ -13,14 +13,16 @@ const Inbox = () => {
       {messages.map((notification, index) => (
         <Card
           key={index}
-          className={`w-full max-w-[50rem] p-6 transition-transform transform hover:scale-105 ${
+          className={`w-[40rem] max-w-[50rem] max-h-[20] p-6 transition-transform transform hover:scale-105 ${
             notification.messageType === 'meeting' ? 'bg-blue-100' : 'bg-white'
           }`}
         >
-          <Typography color='blue-gray' className='mb-4 font-bold'>
+          <Typography color='blue-gray' className='mb-4 font-bold' variant='h5'>
+            Meeting Topic:{`  `}
             {notification.messageTitle}
           </Typography>
           <Typography color='blue-gray' className='font-normal'>
+            Meeting Description: <br />
             {notification.message}
           </Typography>
           {notification.action && (
@@ -28,12 +30,6 @@ const Inbox = () => {
               {notification.action}
             </button>
           )}
-          <Typography
-            color='blue-gray'
-            className='mt-4 text-xs uppercase font-semibold'
-          >
-            {notification.messageType}
-          </Typography>
         </Card>
       ))}
     </div>
