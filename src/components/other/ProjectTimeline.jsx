@@ -18,7 +18,7 @@ export function ProjectTimeline() {
 
   const [projects] = useState(project.timeline);
   return (
-    <div className='w-[32rem] py-[12rem] mx-[5rem]'>
+    <div className='w-[32rem] py-[5rem] mx-[5rem]'>
       <ProjectDetails />
       {projects.map((project) => {
         return (

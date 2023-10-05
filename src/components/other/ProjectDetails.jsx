@@ -10,8 +10,9 @@ const ProjectDetails = () => {
       overflowX: 'auto',
     },
     table: {
-      width: '100%',
+      width: '500px',
       borderCollapse: 'collapse',
+      marginBottom: '60px',
     },
     th: {
       border: '1px solid #e0e0e0',
@@ -37,12 +38,20 @@ const ProjectDetails = () => {
             <th style={styles.th}>Project Name</th>
             <th style={styles.th}>Supervisor ID</th>
             <th style={styles.th}>Team Members</th>
+            <th style={styles.th}>Registration No.</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td style={styles.td}>{project.ProjectName}</td>
             <td style={styles.td}>{project.supervisor_empID}</td>
+            <td style={styles.td}>
+              {project.projectMembers.map((member, index) => (
+                <div key={index} style={styles.memberDiv}>
+                  {member.name}
+                </div>
+              ))}
+            </td>
             <td style={styles.td}>
               {project.projectMembers.map((member, index) => (
                 <div key={index} style={styles.memberDiv}>

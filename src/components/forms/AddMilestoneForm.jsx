@@ -47,7 +47,14 @@ const AddMilestoneForm = () => {
     //   ...prevProject,
     //   timeline: [...prevProject.timeline, finalData],
     // }));
-    addMilestone(finalData);
+
+    if (formData.title === '' || formData.description === '') {
+      alert('Please fill all the fields');
+    } else {
+      addMilestone(finalData).then((res) => {
+        res.status === 200 && setProject(res.data);
+      });
+    }
     // Reset the form
     setFormData({
       title: '',
@@ -67,7 +74,7 @@ const AddMilestoneForm = () => {
             <Input
               type='text'
               color='blue-gray'
-              placeholder='Milestone Title'
+              label='Milestone Title'
               name='title'
               value={formData.title}
               onChange={handleInputChange}
@@ -79,7 +86,7 @@ const AddMilestoneForm = () => {
             <Textarea
               type='text'
               color='blue-gray'
-              placeholder='Milestone Description'
+              label='Milestone Description'
               name='description'
               value={formData.description}
               onChange={handleInputChange}

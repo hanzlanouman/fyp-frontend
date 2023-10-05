@@ -69,7 +69,21 @@ const ArrangeMeetingForm = () => {
 
     // Simulate a call to the API to save the meeting
     console.log(formData);
-    await addMeeting(formData);
+    if (
+      formData.topic === '' ||
+      formData.description === '' ||
+      formData.supervisor === ''
+    ) {
+      alert('Please fill all the fields');
+      return;
+    }
+    await addMeeting(formData).then((res) => {
+      if (res.status === 200) {
+        alert('Meeting Scheduled Successfully');
+      } else {
+        alert('Meeting Scheduling Failed! Please Try Again');
+      }
+    });
   };
 
   return (
