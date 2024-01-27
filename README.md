@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Final Year Project (FYP) Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Technology Stack](#technology-stack)
+- [Installation and Setup](#installation-and-setup)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+- [System Architecture](#system-architecture)
+- [Usage and Functionality](#usage-and-functionality)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+The FYP Management System is a web-based platform designed to automate and streamline the management of final year projects at universities. It assists in managing project proposals, tracking progress, facilitating feedback and evaluation, and improving communication between students, faculty, and administrators.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Key Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Project Proposal Management**: Submission and tracking of project proposals.
+- **Supervisor Allocation**: Automated assignment and management of supervisors.
+- **Progress Tracking**: Monitoring of project milestones and progress.
+- **Feedback and Evaluation**: Exchange of feedback and formal evaluation.
+- **Document Management**: Submission and archival of project documents.
+- **Communication Tools**: Integrated messaging and forums for collaboration.
+- **Notification System**: Automated alerts and reminders for key events.
 
-### `npm test`
+## Technology Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+- **Node.js & Express**: For server-side logic.
+- **MySQL**: Database management.
+- **JWT**: Secure authentication.
 
-### `npm run build`
+### Frontend
+- **React**: For building the user interface.
+- **Tailwind CSS & Material Tailwind**: For styling and responsive design.
+- **Axios**: For making HTTP requests.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation and Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+- Node.js
+- MySQL
+- React
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend Setup
+1. Clone the backend repository.
+2. Install dependencies: `npm install`.
+3. Configure MySQL database.
+4. Start the server: `npm start`.
 
-### `npm run eject`
+### Frontend Setup
+1. Clone the frontend repository.
+2. Install dependencies: `npm install`.
+3. Start the React app: `npm start`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## System Architecture
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The FYP Management System adopts a client-server architecture:
+- The backend handles business logic, database operations, and authentication.
+- The frontend focuses on presenting a user-friendly interface and interacting with the backend.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage and Functionality
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Detailed descriptions of how to use the system's features, including project proposal submissions, supervisor allocation, and progress tracking.
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Guidelines for contributing to the project, including coding standards, pull request processes, and issue reporting.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
+Information about the project's license (e.g., MIT License).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Acknowledgements
 
-### Analyzing the Bundle Size
+Special thanks to contributors, advisors, and all who supported the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
